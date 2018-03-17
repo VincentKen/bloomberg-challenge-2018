@@ -1,3 +1,5 @@
 node_modules/
 database/database.sqlite
 *.ftpconfig
+config.js
+
