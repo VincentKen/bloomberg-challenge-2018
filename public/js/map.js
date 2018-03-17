@@ -36,28 +36,88 @@ function locate() {
 
 function fetchMapData() {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "http://37.252.184.84:3000/requests", true);
+  xhttp.open("GET", "requests", true);
   xhttp.addEventListener('load', function() {
     var response = JSON.parse(xhttp.responseText);
+    console.log(response);
+    var entries = [];
 
     for (entry of response) {
+      entries.push({
+          key:   entry.latitude+"/"+entry.longitude,
+          value: entry
+      });
+    }
+
+    var results = entries.reduce(function (obj, item) {
+        obj[item.key] = obj[item.key] || [];
+        obj[item.key].push(item.value);
+        return obj;
+    }, {});
+
+    var groups = Object.keys(results).map(function (key) {
+        return {group: key, value: results[key]};
+    });
+
+    for (entry of groups) {
+      if(entry.group == "null/null")
+        continue;
+
+      var markerText;
+      if(entry.value.length > 1){
+        var markerEndText = "";
+        markerText = '<div class="multiSelect"><div class="input-field col s12">'+
+                      '<select class="selectRequest">'+
+                        '<option value="" disabled selected>Choose one of the requests</option>';
+
+        for (request of entry.value) {
+          markerText += '<option value="'+request.id+'">'+request.requested_resource+'</option>';
+          markerEndText += createInfo(request, "req"+request.id);
+        }
+
+        markerText += '</select>'+
+                      '<label>Select Request</label>'+
+                    '</div>';
+
+        markerText += markerEndText+"</div>";
+      }else{
+        markerText = createInfo(entry.value[0], null);
+      }
 
       let info = new google.maps.InfoWindow({
-        content:"<div class='mapEntry'>"+
-                  "<h1>"+entry.requested_resource+"</h1>"+
-                  "<p><i>Pete is in need of something!</i><br>"+
-                  "<b>Needed: </b>"+entry.requested_resource+"<br>"+
-                  "<b>Location: </b>"+entry.location+"</p>"+
-                  "<a class='waves-effect waves-light btn'>Open in Google Maps</a></div>"
+        content: markerText
       });
 
-      var diff = moment(new Date(entry.createdAt)).fromNow();
+      var diff;
+      if(entry.value.length > 1)
+        diff = "multiple";
+      else
+        diff = moment(new Date(entry.value[0].createdAt)).fromNow();
 
       let marker = new google.maps.Marker({
-        position: {lat: Number(entry.latitude), lng: Number(entry.longitude)},
+        position: {lat: Number(entry.value[0].latitude), lng: Number(entry.value[0].longitude)},
         // icon: {url:"", scaledSize: new google.maps.Size(30, 30), labelOrigin:{x: 15, y: 40}},
         label: {color: "#2b00f7", fontWeight:"bold", text:diff,  labelOrigin:{x: 15, y: 40}},
         map: map
+      });
+
+
+      info.addListener('domready', function() {
+        $('select').material_select();
+
+        $( ".selectRequest" ).change(function() {
+          if(!$(this).val())
+            return;
+
+          var targetID = "req"+$(this).val();
+          $(this).find("option").each(function() {
+            if("req"+$(this).val() == targetID)
+              $("#req"+$(this).val()).show();
+            else
+              $("#req"+$(this).val()).hide();
+            console.log($(this).attr("id"));
+          });
+        });
       });
 
       marker.addListener('click', function() {
@@ -71,7 +131,47 @@ function fetchMapData() {
   xhttp.send();
 }
 
+function createInfo(entry, hideId) {
+  var hideAttr = "";
+  if(hideId)
+    hideAttr = "id='"+hideId+"' style='display: none;'";
+  return "<div class='mapEntry' "+hideAttr+">"+
+            "<h1>"+entry.PhoneNumber.username+" is in need of something!</h1>"+
+            "<p><b>Needed: </b>"+entry.requested_resource+"<br>"+
+            "<b>Location: </b>"+entry.location+"</p>"+
+            "<a class='btn waves-effect waves-light helpButton' onClick='openHelp("+entry.id+")' forId='"+entry.id+"'><i class='fa fa-handshake-o'></i> Offer help to "+entry.PhoneNumber.username+"</a> "+
+            "<a href='http://www.google.com/maps/place/"+entry.latitude+","+entry.longitude+"' class='waves-effect waves-light btn'><i class='fa fa-map-marker'></i> Open in Google Maps</a></div>";
+}
+
 function showPosition(position) {
     map.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
     map.setZoom(16);
 }
+
+var currentId;
+function openHelp(id) {
+  $('#offerHelp').modal('open');
+  currentId = id;
+}
+
+$(document).ready(function(){
+  $('.modal').modal();
+  $('#submitHelp').on('click', function () {
+    console.log($("#helpForm"));
+    if($("#helpForm")[0].checkValidity()){
+     $.ajax({
+         url: 'requests/'+currentId+'/offer',
+         type: "POST",
+         contentType: "application/json",
+         data: JSON.stringify({
+             phone_number: $('#phone_number').val(),
+             message : $('#desc').val(),
+         }),
+         success: function() {
+           console.log("DONE!");
+         }
+     });
+    }
+   });
+   $('#doneModal').modal('open');
+});
