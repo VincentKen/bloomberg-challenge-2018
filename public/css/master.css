@@ -16,6 +16,10 @@ img {
     width: 100%; 
 } 
  
+p{
+    font-size: 17px;
+}
+
 body { 
     font-family: 'IBM Plex Sans Condensed', sans-serif; 
 } 
@@ -29,6 +33,17 @@ h2 {
 h3 { 
     font-size: 25px; 
 } 
+
+footer h3{
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 24px;
+}
+
+footer .row{
+    margin-bottom: 0!important;
+        padding-bottom: 20px;
+}
  
 /* Classes */ 
  
@@ -45,6 +60,11 @@ h3 {
 .section{
     margin-bottom:5em;
 }
+
+footer{
+    background-color: #dbdbdb;
+}
+
 nav{
     background-color: #fff!important;
 }
