@@ -39,29 +39,54 @@
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
-    -->
-    <div class="background">
-        <div class="align-wrapper">
-            <div class="row" id="search">
-                <div class="input-field col s11">
-                    <input type="text" id="input">
-                        <div class="col 1 right-align">
+-->
 
-                        </div>
+    <div class="background">
+        <div class="valign-wrapper">
+            <div class="row" id="search">
+                <div class="input-field col s9">
+                    <input type="text" id="input" class="autocomplete">
+
                     </input>
+                </div>
+                <div class="col 1 right-align">
+                    <button class="btn-floating waves-effect waves-light green" type="submit" name="action">
+                      <i class="material-icons right">search</i>Help
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-    <!--
+
+
+    <div class="valign-wrapper" id="content">
+      <div id="heading" class="scale-transition scale-out">
+        <div class="white-text h1">Tag der offenen Tür</div>
+        <div class="white-text h2">- Informatik am Gymnasium Hochdahl -</div>
+
+        <div class="row" id="search">
+          <div class="input-field col s10">
+            <input type="text" id="searchInput" class="autocomplete">
+          </div>
+          <div class="col s2 right-align">
+             <a class="btn-floating btn waves-effect waves-light red" id="searchBtn"><i class="material-icons">search</i></a>
+          </div>
+          <div class="col s12" id="allWbs">
+            <a onclick="alert('Kommt bald');" href="">» Alle Webseiten</a>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+
+
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#srch-term").attr("placeholder", function(){
-                $.each()
+            $("#search").mouseover(function() {
+                $("#search").class("z-depth-3");
             });
         })
     </script>
-    -->
     <div class="container">
         <div class="row">
             <h2 style="text-align: center">Why you should join?</h2></div>
@@ -131,9 +156,20 @@
     <script>
         $(".button-collapse").sideNav();
     </script>
-</body>
-<header>
 
-</header>
+    <script>
+        new Typed("#input", {
+            strings: ['Help saving lives...', 'Food', 'Blanktes', 'Hope', 'Help people in your region...', 'Spend opportunities', 'Offer chnaces', 'Save the world :)'],
+            typeSpeed: 100,
+            backSpeed: 30,
+            attr: 'placeholder',
+            bindInputFocusEvents: true,
+            showCursor: true,
+            cursorChar: "|",
+            loop: true
+        });
+    </script>
+
+</body>
 
 </html>

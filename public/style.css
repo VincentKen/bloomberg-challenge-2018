@@ -29,6 +29,8 @@ h3
 .background
 {
     background-image: url('http://via.placeholder.com/1000x300');
+    height: full;
+    wight: 
 }
 
 .background-2
