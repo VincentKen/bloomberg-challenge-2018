@@ -4,21 +4,24 @@ const Sequelize = require('sequelize');
 
 const basename = path.basename(__filename);
 
-const sequelize = new Sequelize('bloomberg-2018', {
+const db = {};
+
+const sequelize = new Sequelize('bloomberg-2018', null, null, {
+	dialect: 'sqlite',
 	storage: 'database/database.sqlite'
 });
 
 fs
 	.readdirSync(__dirname)
 	.filter(file => {
-		return (file.indexOf('.') !== 0) && (file !== basename) && (file.slize(-3) === '.js');
+		return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
 	})
 	.forEach(file => {
 		let model = sequelize['import'](path.join(__dirname, file));
 		db[model.name] = model;
 	});
 
-Object.keys(db0.forEach(modelName => {
+Object.keys(db).forEach(modelName => {
 	if (db[modelName].associate) {
 		db[modelName].associate(db);
 	}
@@ -26,6 +29,8 @@ Object.keys(db0.forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+db.sequelize.sync();
 
 module.exports = db;
 
