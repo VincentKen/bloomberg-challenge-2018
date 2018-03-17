@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|IBM+Plex+Sans+Condensed:400,400i" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="style.css" media="screen,projection" />
+    <link rel="stylesheet" href="css/master.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./img/icons/shake_hand.png">
@@ -12,81 +12,34 @@
 </head>
 
 <body>
-    <script type="text/javascript" src="scripts/typed.min.js"></script>
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/scripts/typed.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
 
-    <!-- No slide-out menu
-    <div class="container">
-        <ul id="slide-out" class="side-nav">
-            <li>
-                <div class="user-view">
-                    <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-                    <a href="#!name"><span class="white-text name">John Doe</span></a>
-                </div>
-            </li>
-            <li><a href="#!">Requests</a></li>
-            <li><a href="#!">Log in</a></li>
-            <li><a href="#!">Sign up</a></li>
-            <li>
-                <div class="divider"></div>
-            </li>
-            <li><a class="subheader">About us</a></li>
-            <li><a href="#!">Terms &amp; Conditions</a></li>
-            <li><a href="#!">Privacy policy</a></li>
-            <li><a href="#!">Cookies policy</a></li>
-            <li><a href="#!">Contact us</a></li>
-        </ul>
-        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
--->
-
-    <div class="background">
-        <div class="valign-wrapper">
-            <div class="row" id="search">
-                <div class="input-field col s9">
+    <div class="center-align background" style="height: 100%">
+        <div class="center-align valign-wrapper" style="height: 100%">
+            <div class="center-align row" id="search">
+                <div class="input-field col s10">
                     <input type="text" id="input" class="autocomplete">
-
-                    </input>
                 </div>
-                <div class="col 1 right-align">
-                    <button class="btn-floating waves-effect waves-light green" type="submit" name="action">
-                      <i class="material-icons right">search</i>Help
+                <div class="col 2 right-align">
+                    <button class="btn-floating btn-large waves-effect waves-light green" type="submit">
+                      <i class="medium material-icons right">search</i>Help
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <div class="valign-wrapper" id="content">
-      <div id="heading" class="scale-transition scale-out">
-        <div class="white-text h1">Tag der offenen Tür</div>
-        <div class="white-text h2">- Informatik am Gymnasium Hochdahl -</div>
-
-        <div class="row" id="search">
-          <div class="input-field col s10">
-            <input type="text" id="searchInput" class="autocomplete">
-          </div>
-          <div class="col s2 right-align">
-             <a class="btn-floating btn waves-effect waves-light red" id="searchBtn"><i class="material-icons">search</i></a>
-          </div>
-          <div class="col s12" id="allWbs">
-            <a onclick="alert('Kommt bald');" href="">» Alle Webseiten</a>
-          </div>
-        </div>
-        <br><br>
-      </div>
-    </div>
-
-
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#search").mouseover(function() {
-                $("#search").class("z-depth-3");
+            $("#input").mouseover(function() {
+                $("#input").addClass("z-depth-2");
             });
         })
     </script>
+
     <div class="container">
         <div class="row">
             <div class="corner col s12 col l4">
@@ -107,7 +60,8 @@
         </div>
         <div class="row">
             <h2 style="text-align: center">How can you help?</h2>
-            <p class="examples">We want to give you some examples of how you can contribute to the local community:</p></div>
+            <p class="examples">We want to give you some examples of how you can contribute to the local community:</p>
+        </div>
         <div class="row">
             <div class="col s12 col l4">
                 <img src="img/icons/blanket.png">
@@ -124,9 +78,10 @@
                 <h3>Matress</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
             </div>
-            
+
         </div>
     </div>
+
     <div class="background-2">
         <div class="row">
             <h2 style="text-align: center">Ready to help?</h2></div>
