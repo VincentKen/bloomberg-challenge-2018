@@ -1,48 +1,77 @@
 const models = require('./models');
+const NodeGeocoder = require('node-geocoder');
 
-const dummy_number = '+31624776676';
-const dummy_username = 'Vincent Kenbeek';
+models.sequelize.sync({force: true}).then(() => {
 
-const requests = [
-	{
-		phone_number: dummy_number,
-		location: 'Torenallee 36',
-		requested_resource: 'food',
-	},
-	{
-		phone_number: dummy_number,
-		location: 'Torenallee 36',
-		requested_resource: 'blanket'
-	},
-	{
-		phone_number: dummy_number,
-		location: 'Kastanjelaan',
-		requested_resource: 'food'
-	}
-];
+	const dummy_number = '+31624776676';
+	const dummy_username = 'Vincent Kenbeek';
 
+	const geocoder_options = {
+		provider: 'google',
+		apiKey: 'AIzaSyCaSU54kzkY9TqNt9SyxfL3IW2exENdOGE'
+	};
 
-models.PhoneNumber.destroy({
-	where: {
-		number: dummy_number
-	}
-}).then(() => {
-	models.PhoneNumber.findOrCreate({
-		where: {
-			number: dummy_number
+	const geocoder = NodeGeocoder(geocoder_options);
+
+	const requests = [
+		{
+			phone_number: dummy_number,
+			location: 'Torenallee 36',
+			requested_resource: 'food',
 		},
-		defaults: {
-			number: dummy_number,
-			username: dummy_username
+		{
+			phone_number: dummy_number,
+			location: 'Torenallee 36',
+			requested_resource: 'blanket'
+		},
+		{
+			phone_number: dummy_number,
+			location: 'Kastanjelaan',
+			requested_resource: 'food'
 		}
-	}).spread((phone_number, created) => {
-		console.log(phone_number.get({
-			plain: true
-		}));
-		console.log(created);
-		models.Request.bulkCreate(requests).then((err, res) => {
-			console.log(err);
-			console.log(res);
+	];
+
+
+	let requests_geocoded = 0;
+
+	for (let i = 0; i < requests.length; i++) {
+		geocoder.geocode(requests[i].location).then((res) => {
+			requests[i].latitude = res[0].latitude;
+			requests[i].longitude = res[0].longitude;
+			requests_geocoded++;
 		});
-	});
+	}
+
+	let t = setInterval(() => {
+		if (requests_geocoded === requests.length) {
+			clearInterval(t);
+			models.PhoneNumber.destroy({
+		                where: {
+                		        number: dummy_number
+		                }
+		        }).then(() => {
+                		models.PhoneNumber.findOrCreate({
+		                        where: {
+                		                number: dummy_number
+		                        },
+                		        defaults: {
+                                		number: dummy_number,
+		                                username: dummy_username
+                		        }
+		                }).spread((phone_number, created) => {
+                		        console.log(phone_number.get({
+                                		plain: true
+		                        }));
+
+	
+        		                models.Request.bulkCreate(requests).then((res) => {
+		                                //console.log(res);
+						console.log('Requests created');
+                		        });
+		                });
+		        });
+
+		}
+	}, 100);
+
 });

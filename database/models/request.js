@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
 		location: DataTypes.STRING,
 		requested_resource: DataTypes.STRING,
 		completed: {
-			type: DataTypes.BOOLEAN
+			type: DataTypes.BOOLEAN,
 			default: true
 		},
 		longitude: DataTypes.STRING,
