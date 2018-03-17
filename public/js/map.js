@@ -125,6 +125,10 @@ function fetchMapData() {
       });
     }
   });
+
+  xhttp.addEventListener('error', () => console.log("Request failed"));
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send();
 }
 
 function createInfo(entry, hideId) {
@@ -153,18 +157,21 @@ function openHelp(id) {
 $(document).ready(function(){
   $('.modal').modal();
   $('#submitHelp').on('click', function () {
-    if($("#helpForm").checkValidity()){
+    console.log($("#helpForm"));
+    if($("#helpForm")[0].checkValidity()){
      $.ajax({
-         url: 'request/'+currentId+'/offer',
-         type: "post",
-         body: {
+         url: 'requests/'+currentId+'/offer',
+         type: "POST",
+         contentType: "application/json",
+         data: JSON.stringify({
              phone_number: $('#phone_number').val(),
              message : $('#desc').val(),
-         },
+         }),
          success: function() {
            console.log("DONE!");
          }
      });
     }
    });
+   $('#doneModal').modal('open');
 });

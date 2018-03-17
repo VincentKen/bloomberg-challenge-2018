@@ -1,16 +1,15 @@
-@@ -1,83 +0,0 @@
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-form {
+/* form { //make this only for the index
     padding-top: 7em;
     padding-bottom: 7em;
     margin-left: 12em;
     margin-right: 12em;
-}
+} */
 
 img {
     width: 100%;
