@@ -212,10 +212,6 @@ nav ul a {
     color: #000;
 }
 
-#nav-mobile{
-    margin-right: 4em;
-}
-
 .rcorner {
     border-radius: 25px;
     padding: 20px;
@@ -315,10 +311,6 @@ h3 {
     width: 100%;
 }
 
-#map {
-    height: 100%;
-}
-
 .icon{
     width: 50%;
     margin: 0 auto;
@@ -333,10 +325,6 @@ h3
 {
    font-size: 25px;
     text-align: center;
-}
-
-#map {
-  height: 100%;
 }
 
 .mapEntry h1{
@@ -362,4 +350,8 @@ h3
 {
    font-size: 25px;
     text-align: center;
+}
+#map_b
+{
+    background-color: #464071 !important;
 }
