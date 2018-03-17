@@ -34,14 +34,34 @@ h3 {
  
 .background 
 { 
+    padding-top: 10em;
+    padding-bottom: 10em;
+    background-color: #F19006;
+    margin-bottom: 5em;
     background-size: cover; 
     background-image: image('img/holding_hands_bw_FHD.png'); 
 } 
- 
-.background-2 { 
-    padding-top: 2em; 
-    background: url('img/monica-melton-467245-unsplash.jpg'); 
-} 
+
+.section{
+    margin-bottom:5em;
+}
+nav{
+    background-color: #fff!important;
+}
+
+nav .brand-logo {
+    position: absolute!important;
+    color: #3A275E!important;
+    margin-left: 4em;
+}
+
+nav ul a {
+    color: #000;
+}
+
+#nav-mobile{
+    margin-right: 4em;
+}
  
 .rcorner { 
     border-radius: 25px; 
@@ -60,7 +80,8 @@ h3 {
 #search { 
     padding-top: 45%; 
     padding: 10px; 
-    width: 100%; 
+width: 80%;
+    margin: 0 auto;
 } 
  
 #map { 
