@@ -2,6 +2,7 @@ const express = require('express');
 const twilio = require('twilio');
 const bodyParser = require('body-parser');
 const NodeGeocoder = require('node-geocoder');
+const validator = require('validator');
 
 const models = require('./database/models');
 const config = require('./config');
@@ -9,9 +10,12 @@ const config = require('./config');
 const twilioClient = twilio(config.twilio.accountSID, config.twilio.authToken);
 const MessagingResponse = twilio.twiml.MessagingResponse;
 
+models.sequelize.sync();
+
 const app = express();
 
 app.use(express.static('public'));
+app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', (req, res) => res.send('Hello World'));
@@ -19,9 +23,67 @@ app.get('/', (req, res) => res.send('Hello World'));
 app.get('/requests', (req, res) => {
 	models.Request.findAll({
 		include: [ {model: models.PhoneNumber, attributes: ['username']} ],
-		attributes: ['id', 'location', 'longitude', 'latitude', 'createdAt', 'updatedAt']
+		attributes: ['id', 'location', 'longitude', 'latitude', 'createdAt', 'updatedAt', 'requested_resource']
 	}).then(requests => {
 		res.json(requests);
+	});
+});
+
+app.post('/requests/:id/offer', (req, res) => {
+	let requestId = req.params.id;
+	console.log(req.body);
+	if (!req.body.message || req.body.message === '' || req.body.message.length < 10) {
+		res.json({
+			message: 'message needs to be atleast 10 characters long'
+		}, 400);
+		return;
+	}
+	if (req.body.message.length > 255) {
+		res.json({
+			message: 'message can be no longer then 255 characters'
+		}, 400);
+		return;
+	}
+	if (!validator.isMobilePhone(req.body.phone_number, 'any')) {
+		res.json({
+			message: 'phone_number is not a valid phone number'
+		}, 400);
+		return;
+	}
+	models.Request.findById(requestId, {include: [ models.PhoneNumber ]}).then(request => {
+		if (!request) {
+			res.json({
+				message: 'request not found'
+			}, 404);
+			return;
+		}
+		models.Offer.create({
+			request_id: requestId,
+			message: req.body.message,
+			phone_number: req.body.phone_number
+		}).then(offer => {
+			res.json(offer);
+			twilioClient.messages.create({
+				to: request.PhoneNumber.number,
+				from: config.twilio.number,
+				body: 'Someone has offered to help you!\n' +
+					`If you want to accept this persons help enter "${offer.id}: "` +
+					'followed by a message which helps the volunteer find you, this may include your phone number if you don\'t mind giving it away to a stranger.\n' +
+					'Please keep in mind that you can only accept one offer.\n\n' + 
+					req.body.message
+			}, (err, message) => {
+				if (err) {
+					console.error(err);
+					// TODO implement error handling
+				}
+			});
+		}).catch(err => {
+			console.error(err);
+			// TODO implement error handling
+		});
+	}).catch(err => {
+		console.error(err);
+		// TODO implement error handling
 	});
 });
 
@@ -188,7 +250,7 @@ app.post('/twilio/sms', (req, res) => {
 					for (let i = 0; i < geo_data.length; i++) {
 						city_list.push(geo_data[i].city);
 					}
-					twiml.message(`\nPlease specify your city by entering one of the following cities behind your street name: ${city_list.join(',')}`);
+					twiml.message(`\nPlease specify your city by replying "Location: " + the street you currently on + one of the following cities: ${city_list.join(',')}`);
 					console.log('ENDING REQUEST');
 					console.log(new Date().getTime() - t);
 					console.log(twiml.toString());
@@ -197,7 +259,7 @@ app.post('/twilio/sms', (req, res) => {
 				} else if (geo_data.length === 0) {
 					console.log('No location found');
 					twiml.message(`
-						We could not find your location. Do you make a typo?
+						We could not find your location. Did you make a typo?
 					`);
 					console.log('ENDING REQUEST');
 					console.log(new Date().getTime() - t);
@@ -226,6 +288,42 @@ app.post('/twilio/sms', (req, res) => {
 		});
 	}
 
+	function acceptOffer(offerID) {
+		models.Offer.findById(offerID, {
+			include: [{
+				model: models.Request,
+				include: [ models.PhoneNumber ]
+			}]
+		}).then(offer => {
+			if (offer.Request.phone_number !== number) {
+				twiml.message('Oops! it looks like you entered an invalid offer number, please try again.');
+				res.end(twiml.toString());
+				return;
+			}
+			offer.accepted = true;
+			offer.save().then(_ => {
+				twilioClient.messages.create({
+					to: offer.phone_number,
+					from: config.twilio.number,
+					body: `Your offer to ${offer.Request.PhoneNumber.username} has been accepted!\n` +
+						`${offer.Request.PhoneNumber.username} requested '${offer.Request.requested_resource}'.\n` +
+						`And sends you this message:\n\n${body.split(' ').splice(1).join(' ')}`
+				}, (err, message) => {
+					if (err) {
+						console.error(err);
+						// TODO implement error handling
+						return;
+					}
+					twiml.message('Your message has been sent');
+					res.end(twiml.toString());
+				});
+			});
+		}).catch(err => {
+			console.error(err);
+			// TODO implement error handling
+		});
+	}
+	console.log(' TEST' );
 	switch(type.toLowerCase()) {
 		case 'hello':
 			handleGreeting();
@@ -244,14 +342,20 @@ app.post('/twilio/sms', (req, res) => {
 			res.end(twiml.toString());
 			break;
 		default:
-			twiml.message(`\nSorry we couldn't process you request. To make a request start by saying Hello.`);
+			console.log('Default');
+			if (type.toLowerCase().test(/^([0-9]+)\: /)){
+				acceptOffer(type.toLowerCase().match(/^([0-9]+)\: /)[1]);
+				break;
+			}
+			console.log('Send response');
+			twiml.message(`\nThere seems to be something wrong with your message, please try again. Reply with "?" to get help`);
 			res.end(twiml.toString());
 			break;
 			
 	}
 });
 
-app.listen(3000, () => console.log('Listening on port 3000'));
+app.listen(80, () => console.log('Listening on port 80'));
 
 /*twilioClient.messages.create({
 	to: '+31624776676',
