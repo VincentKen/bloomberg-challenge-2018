@@ -7,13 +7,15 @@ body
     font-family: 'IBM Plex Sans Condensed', sans-serif;
 }
 
-h2 {
+h2
+{
     font-size: 28px;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-h3 {
+h3
+{
     font-size: 25px;
 }
 
@@ -104,23 +106,20 @@ nav ul a
 #search {
     padding-top: 45%;
     padding: 10px;
-width: 80%;
+    width: 80%;
     margin: 0 auto;
 }
 
-button.btn-floating.btn-large.waves-effect.waves-light.green{
+button.btn-floating.btn-large.waves-effect.waves-light.green
+{
 background-color: #3A275E!important;
 }
-<<<<<<< HEAD
-=======
-
 
 h3
 {
    font-size: 25px;
     text-align: center;
 }
->>>>>>> origin/master
 
 button.btn-floating.btn-large.waves-effect.waves-light.green
 {
