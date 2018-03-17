@@ -71,3 +71,19 @@ h3
 {
     padding: 10px;
 }
+
+.icon{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.examples{
+    text-align: center;
+}
+
+
+h3
+{
+   font-size: 25px;
+    text-align: center;
+}
