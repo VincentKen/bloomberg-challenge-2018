@@ -351,7 +351,12 @@ h3
    font-size: 25px;
     text-align: center;
 }
-#map_b
+#btn_map
 {
     background-color: #464071 !important;
+}
+div.collapsible-body
+{
+    background-color: #8670AF;
+    color: white;
 }
