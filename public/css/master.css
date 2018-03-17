@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @@ -1,83 +0,0 @@
 html, body { 
     height: 100%; 
@@ -16,6 +17,159 @@ img {
     width: 100%; 
 } 
  
+=======
+body
+{
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+h2
+{
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h3
+{
+    font-size: 25px;
+}
+
+footer h3{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h3
+{
+    font-size: 25px;
+}
+
+footer h3
+{
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 24px;
+}
+
+footer .row
+{
+    margin-bottom: 0!important;
+    padding-bottom: 20px;
+}
+
+/* Classes */
+
+.background
+{
+    padding-top: 10em;
+    padding-bottom: 10em;
+    background-color: #F19006;
+    margin-bottom: 5em;
+    background-size: cover;
+    background: image('img/holding_hands_bw_FHD.png');
+}
+
+.section
+{
+    margin-bottom:5em;
+}
+
+footer
+{
+    background-color: #dbdbdb;
+}
+
+nav
+{
+    background-color: #fff!important;
+}
+
+nav .brand-logo
+{
+    position: absolute!important;
+    color: #3A275E!important;
+    margin-left: 4em;
+}
+
+nav ul a
+{
+    color: #000;
+}
+
+.rcorner
+{
+    border-radius: 25px;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+}
+
+.rcorner {
+    border-radius: 25px;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+}
+
+.just {
+    text-align: justify;
+    padding: 10px;
+}
+
+/* Ids */
+
+#search {
+    padding-top: 45%;
+    padding: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+button.btn-floating.btn-large.waves-effect.waves-light.green
+{
+background-color: #3A275E!important;
+}
+
+h3
+{
+   font-size: 25px;
+    text-align: center;
+}
+
+/* Ids */
+
+#search
+{
+    padding-top: 45%;
+    padding: 10px;
+    width: 80%;
+    margin: 0 auto;
+    color: white;
+}
+
+#map
+{
+    height: 100%;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#indexContet form {
+    padding-top: 7em;
+    padding-bottom: 7em;
+    margin-left: 12em;
+    margin-right: 12em;
+}
+
+img {
+    width: 100%;
+}
+
+>>>>>>> master
 p{
     font-size: 17px;
 }
@@ -79,6 +233,7 @@ nav ul a {
     color: #000;
 }
 
+<<<<<<< HEAD
 #nav-mobile{
     margin-right: 4em;
 }
@@ -100,6 +255,25 @@ nav ul a {
 #search { 
     padding-top: 45%; 
     padding: 10px; 
+=======
+.rcorner {
+    border-radius: 25px;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+}
+
+.just {
+    text-align: justify;
+    padding: 10px;
+}
+
+/* Ids */
+
+#search {
+    padding-top: 45%;
+    padding: 10px;
+>>>>>>> master
 width: 80%;
     margin: 0 auto;
 } 
@@ -124,7 +298,101 @@ h3
     text-align: center; 
 } 
 
+<<<<<<< HEAD
+=======
+h2 {
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+/* Classes */
+
+.background
+{
+    background-size: cover;
+    background-image: image('img/holding_hands_bw_FHD.png');
+}
+
+.background-2 {
+    padding-top: 2em;
+    background: url('img/monica-melton-467245-unsplash.jpg');
+}
+
+.rcorner {
+    border-radius: 25px;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+}
+
+.just {
+    text-align: justify;
+    padding: 10px;
+}
+
+/* Ids */
+
+#search {
+    padding-top: 45%;
+    padding: 10px;
+    width: 100%;
+}
+
+.icon{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.examples{
+    text-align: center;
+}
+
+
+h3
+{
+   font-size: 25px;
+    text-align: center;
+}
+
+.mapEntry h1{
+  font-size: 16pt;
+  padding-right: 10px;
+  font-style: italic;
+}
+
+.multiSelect{
+  min-width: 280px;
+  min-height: 200px;
+}
+
+.mapEntry{
+  font-size: 13pt;
+}
+>>>>>>> master
 button.btn-floating.btn-large.waves-effect.waves-light.green{
 background-color: #3A275E!important;
 }
 
+<<<<<<< HEAD
+=======
+
+h3
+{
+   font-size: 25px;
+    text-align: center;
+}
+#btn_map
+{
+    background-color: #464071 !important;
+}
+div.collapsible-body
+{
+    background-color: #8670AF;
+    color: white;
+}
+>>>>>>> master

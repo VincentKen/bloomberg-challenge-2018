@@ -1,7 +1,10 @@
-<html lang="en"><head>
+<html lang="en">
+
+<head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|IBM+Plex+Sans+Condensed:400,400i" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection">
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="/css/fa.min.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./img/icons/shake_hand.png">
@@ -10,21 +13,23 @@
 
 <body>
     <!-- Scripts -->
-    <script type="text/javascript" src="js/scripts/typed.min.js"></script>
+    <script type="text/javascript" src="js/typed.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
- <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Helping hands</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Who we are</a></li>
-        <li><a href="badges.html">Contact us</a></li>
-      </ul>
-    </div>
-  </nav>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Helping hands</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#!">Who we are</a></li>
+                <li><a href="#!">Contact us</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="center-align background" style="height: 100%">
         <h2>Break barriers, start to build.</h2>
-            <p>Find local people who need your help.</p>
+        <p>Find local people who need your help.</p>
+        <a class="waves-effect waves-light btn-large" id="btn_map" href="map.html"><i class="far fa-map"></i>Check out the live map</a>
+        <!--
         <div class="center-align valign-wrapper search-form" style="height: 100%">
             <div class="center-align row" id="search">
                 <div class="input-field col s10">
@@ -37,14 +42,17 @@
                 </div>
             </div>
         </div>
+    -->
     </div>
 
-    <script type="text/javascript">
+    <!-- f -->
+
+    <!-- <script type="text/javascript">
         $(document).ready(function() {
             $("#input").mouseover(function() {
                 $("#input").addClass("z-depth-2");
             });
-        })
+        }) -->
     </script>
 
     <div class="container">
@@ -105,38 +113,36 @@
     </div>
 
     <footer>
-    <div class="row">
-        <div class="container">
-        <div class="col s12 col l4">
-        <h3>About us</h3>
-        <p>Terms &amp; Conditions</p>
-        <p>Privacy policy</p>
-        <p>Cookies policy</p>
-        <p>F&amp;Q</p>
-        </div>
-        <div class="col s12 col l4">
-        </div>
-        <div class="col s12 col l4">
-        <h3>Connect with us</h3>
-        <p>Social networks</p>
-        <p>loremipsum@loremipsum.com</p>
-        <p>Phone number</p>
-        <p>Location</p>
-        </div>
+        <div class="row">
+            <div class="container">
+                <div class="col s12 col l4">
+                    <h3>About us</h3>
+                    <p>Terms &amp; Conditions</p>
+                    <p>Privacy policy</p>
+                    <p>Cookies policy</p>
+                    <p>F&amp;Q</p>
+                </div>
+                <div class="col s12 col l4">
+                </div>
+                <div class="col s12 col l4">
+                    <h3>Connect with us</h3>
+                    <p>Social networks</p>
+                    <p>loremipsum@loremipsum.com</p>
+                    <p>Phone number</p>
+                    <p>Location</p>
+                </div>
             </div>
-    </div>
+        </div>
     </footer>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script>
-        $(".button-collapse").sideNav();
-    </script>
 
+    <!-- Searchar deactivated
     <script>
         new Typed("#input", {
-            strings: ['Help saving lives...', 'Food', 'Blanktes', 'Hope', 'Help people in your region...', 'Spend opportunities', 'Offer chnaces', 'Save the world :)'],
-            typeSpeed: 100,
-            backSpeed: 30,
+            strings: ['Help saving lives...', 'Food...', 'Blanktes...', 'Hope...', 'Help people in your region...', 'Give opportunities...', 'Offer chnaces...', 'Save the world :)'],
+            typeSpeed: 90,
+            backSpeed: 25,
             attr: 'placeholder',
             bindInputFocusEvents: true,
             showCursor: true,
@@ -144,8 +150,11 @@
             loop: true
         });
     </script>
+    -->
 
 
 
+    <!-- <div class="hiddendiv common"></div> -->
+</body>
 
-<div class="hiddendiv common"></div></body></html>
+</html>
