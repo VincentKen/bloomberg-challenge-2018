@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|IBM+Plex+Sans+Condensed:400,400i" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="style.css" media="screen,projection" />
+    <link rel="stylesheet" href="css/master.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./img/icons/shake_hand.png">
@@ -12,106 +12,73 @@
 </head>
 
 <body>
-    <script type="text/javascript" src="scripts/typed.min.js"></script>
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/scripts/typed.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
 
-    <!-- No slide-out menu
-    <div class="container">
-        <ul id="slide-out" class="side-nav">
-            <li>
-                <div class="user-view">
-                    <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-                    <a href="#!name"><span class="white-text name">John Doe</span></a>
+    <div class="center-align background" style="height: 100%">
+        <div class="center-align valign-wrapper search-form" style="height: 100%">
+            <div class="center-align row" id="search">
+                <div class="input-field col s10">
+                    <input type="text" id="input" class="autocomplete">
                 </div>
-            </li>
-            <li><a href="#!">Requests</a></li>
-            <li><a href="#!">Log in</a></li>
-            <li><a href="#!">Sign up</a></li>
-            <li>
-                <div class="divider"></div>
-            </li>
-            <li><a class="subheader">About us</a></li>
-            <li><a href="#!">Terms &amp; Conditions</a></li>
-            <li><a href="#!">Privacy policy</a></li>
-            <li><a href="#!">Cookies policy</a></li>
-            <li><a href="#!">Contact us</a></li>
-        </ul>
-        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-    -->
-    <div class="background">
-        <div class="align-wrapper">
-            <div class="row" id="search">
-                <div class="input-field col s11">
-                    <input type="text" id="input">
-                        <div class="col 1 right-align">
-
-                        </div>
-                    </input>
+                <div class="col 2 right-align">
+                    <button class="btn-floating btn-large waves-effect waves-light green" type="submit">
+                      <i class="medium material-icons right">search</i>Help
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-    <!--
+
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#srch-term").attr("placeholder", function(){
-                $.each()
+            $("#input").mouseover(function() {
+                $("#input").addClass("z-depth-2");
             });
         })
     </script>
-    -->
+
     <div class="container">
         <div class="row">
-            <h2 style="text-align: center">Why you should join?</h2></div>
-        <div class="row">
-            <div class="corner col s12 col l3">
-                <img src="http://via.placeholder.com/225x200">
-                <h3>Lorem ipsum</h3>
-                <p class="z-depth-2 rcorner just">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
+            <div class="corner col s12 col l4">
+                <center><img src="img/icons/placeholder.png" class="icon"></center>
+                <h3>Find a request near you</h3>
             </div>
-            <div class="corner col s12 col l3">
-                <img src="http://via.placeholder.com/225x200">
-                <h3>Lorem ipsum</h3>
-                <p class="z-depth-2 rcorner just">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
+            <div class="corner col s12 col l4">
+                <center><img src="img/icons/target.png" class="icon"></center>
+                <h3>Claim the request</h3>
             </div>
-            <div class="corner col s12 col l3">
-                <img src="http://via.placeholder.com/225x200">
-                <h3>Lorem ipsum</h3>
-                <p class="z-depth-2 rcorner just">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
-            </div>
-            <div class="corner col s12 col l3">
-                <img src="http://via.placeholder.com/225x200">
-                <h3>Lorem ipsum</h3>
-                <p class="z-depth-2 rcorner just">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
+            <div class="corner col s12 col l4">
+                <center><img src="img/icons/trophy.png" class="icon"></center>
+                <h3>Take action, help someone</h3>
             </div>
         </div>
         <div class="row">
-            <h2 style="text-align: center">How it works?</h2></div>
+            <h2 style="text-align: center">How can you help?</h2>
+            <p class="examples">We want to give you some examples of how you can contribute to the local community:</p>
+        </div>
         <div class="row">
-            <div class="col s12 col l3">
-                <img src="http://via.placeholder.com/225x200">
-                <h3>Lorem ipsum</h3>
+            <div class="col s12 col l4">
+                <img src="img/icons/blanket.png">
+                <h3>Blankets</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
             </div>
-            <div class="col s12 col l3">
-                <img src="http://via.placeholder.com/225x200">
-                <h3>Lorem ipsum</h3>
+            <div class="col s12 col l4">
+                <img src="img/icons/vegetables.png">
+                <h3>Food</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
             </div>
-            <div class="col s12 col l3">
-                <img src="http://via.placeholder.com/225x200">
-                <h3>Lorem ipsum</h3>
+            <div class="col s12 col l4">
+                <img src="img/icons/mattress.png">
+                <h3>Matress</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
             </div>
-            <div class="col s12 col l3">
-                <img src="http://via.placeholder.com/225x200">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
-            </div>
+
         </div>
     </div>
+
     <div class="background-2">
         <div class="row">
             <h2 style="text-align: center">Ready to help?</h2></div>
@@ -131,9 +98,20 @@
     <script>
         $(".button-collapse").sideNav();
     </script>
-</body>
-<header>
 
-</header>
+    <script>
+        new Typed("#input", {
+            strings: ['Help saving lives...', 'Food', 'Blanktes', 'Hope', 'Help people in your region...', 'Spend opportunities', 'Offer chnaces', 'Save the world :)'],
+            typeSpeed: 100,
+            backSpeed: 30,
+            attr: 'placeholder',
+            bindInputFocusEvents: true,
+            showCursor: true,
+            cursorChar: "|",
+            loop: true
+        });
+    </script>
+
+</body>
 
 </html>
