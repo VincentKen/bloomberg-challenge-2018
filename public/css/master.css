@@ -58,6 +58,25 @@ footer .row
     padding-bottom: 20px;
 }
 
+#nav-mobile{
+    margin-right: 4em;
+    color: #000;
+}
+
+p{
+    font-size: 17px;
+}
+
+footer
+{
+    background-color: #dbdbdb;
+}
+
+nav
+{
+    background-color: #fff!important;
+}
+
 /* Classes */
 
 .background
@@ -70,19 +89,14 @@ footer .row
     background: image('img/holding_hands_bw_FHD.png');
 }
 
-.section
+.section-steps
 {
-    margin-bottom:5em;
+    margin-bottom:3em;
 }
 
-footer
+.section-help
 {
-    background-color: #dbdbdb;
-}
-
-nav
-{
-    background-color: #fff!important;
+    margin-top:3em;
 }
 
 nav .brand-logo
@@ -255,7 +269,8 @@ nav ul a {
 #search { 
     padding-top: 45%; 
     padding: 10px; 
-=======
+}
+
 .rcorner {
     border-radius: 25px;
     padding: 20px;
