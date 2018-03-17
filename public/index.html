@@ -13,18 +13,18 @@
 
 <body>
     <!-- Scripts -->
-    <script type="text/javascript" src="js/scripts/typed.min.js"></script>
+    <script type="text/javascript" src="js/typed.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
 
     <div class="center-align background" style="height: 100%">
-        <div class="center-align valign-wrapper search-form" style="height: 100%">
+        <div class="center-align valign-wrapper" style="height: 100%">
             <div class="center-align row" id="search">
-                <div class="input-field col s10">
-                    <input type="text" id="input" class="autocomplete">
+                <div class="input-field col s10 offset-s1">
+                    <input type="text" id="input" class="autocomplete" style="font-size: 60px">
                 </div>
                 <div class="col 2 right-align">
-                    <button class="btn-floating btn-large waves-effect waves-light green" type="submit">
+                    <button id="sbtn" class="btn-floating btn-large waves-effect waves-light green" type="submit">
                       <i class="medium material-icons right">search</i>Help
                     </button>
                 </div>
@@ -78,7 +78,7 @@
 
         </div>
     </div>
-
+<!--
     <div class="background-2">
         <div class="row">
             <h2 style="text-align: center">Ready to help?</h2></div>
@@ -93,12 +93,9 @@
             </div>
         </form>
     </div>
+-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script>
-        $(".button-collapse").sideNav();
-    </script>
-
     <script>
         new Typed("#input", {
             strings: ['Help saving lives...', 'Food', 'Blanktes', 'Hope', 'Help people in your region...', 'Spend opportunities', 'Offer chnaces', 'Save the world :)'],

@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
 			onDelete: 'CASCADE',
 			foreignKey: 'phone_number'
 		});
+
+		models.Request.hasMany(models.Offer, {
+			foreignKey: 'request_id'
+		});
 	};
 
 	return Request;
