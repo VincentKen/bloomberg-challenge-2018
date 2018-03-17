@@ -8,6 +8,17 @@ html, body {
   height: 100%;
 }
 
-.mapEntry{
+.mapEntry h1{
+  font-size: 16pt;
+  padding-right: 10px;
+  font-style: italic;
+}
 
+.multiSelect{
+  min-width: 280px;
+  min-height: 200px;
+}
+
+.mapEntry{
+  font-size: 13pt;
 }
