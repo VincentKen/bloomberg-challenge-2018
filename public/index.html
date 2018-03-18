@@ -1,12 +1,12 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|IBM+Plex+Sans+Condensed:400,400i" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection">
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="/css/fa.min.css">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./img/icons/shake_hand.png">
     <title>| Helping Hands |</title>
 </head>
@@ -16,91 +16,147 @@
     <script type="text/javascript" src="js/typed.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-
-    <div class="center-align background" style="height: 100%">
-        <div class="center-align valign-wrapper" style="height: 100%">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Helping hands</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#!">Who we are</a></li>
+                <li><a href="#!">Contact us</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="mobile-nav">
+    <a href="#" class="brand-logo">Helping hands</a>
+    <ul id="slide-out" class="side-nav">
+    <li><a href="#!">Who we are</a></li>
+    <li><a href="#!">Contact us</a></li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></div>
+    <div class="center-align background">
+        <h2>Break barriers, start building.</h2>
+        <p>Find local people who need your help.</p>
+        <a class="waves-effect waves-light btn-large" id="btn_map" href="map.html"><i class="far fa-map"></i>Check out the live map</a>
+        <!--
+        <div class="center-align valign-wrapper search-form" style="height: 100%">
             <div class="center-align row" id="search">
-                <div class="input-field col s10 offset-s1">
-                    <input type="text" id="input" class="autocomplete" style="font-size: 60px">
+                <div class="input-field col s10">
+                    <input type="text" id="input" class="autocomplete z-depth-2">
                 </div>
                 <div class="col 2 right-align">
-                    <button id="sbtn" class="btn-floating btn-large waves-effect waves-light green" type="submit">
+                    <button class="btn-floating btn-large waves-effect waves-light green" type="submit">
                       <i class="medium material-icons right">search</i>Help
                     </button>
                 </div>
             </div>
         </div>
+    -->
     </div>
 
-    <script type="text/javascript">
+    <!-- f -->
+
+    <!-- <script type="text/javascript">
         $(document).ready(function() {
             $("#input").mouseover(function() {
                 $("#input").addClass("z-depth-2");
             });
         })
-    </script>
+    </script> -->
 
     <div class="container">
-        <div class="row">
-            <div class="corner col s12 col l4">
+        <div class="row section-steps">
+            <div class="corner col s12 col l4 col m4">
                 <center><img src="img/icons/placeholder.png" class="icon"></center>
                 <h3>Find a request near you</h3>
             </div>
-            <div class="corner col s12 col l4">
+            <div class="corner col s12 col l4 col m4">
                 <center><img src="img/icons/target.png" class="icon"></center>
                 <h3>Claim the request</h3>
             </div>
-            <div class="corner col s12 col l4">
+            <div class="corner col s12 col l4 col m4">
                 <center><img src="img/icons/trophy.png" class="icon"></center>
                 <h3>Take action, help someone</h3>
             </div>
         </div>
-        <div class="row">
+        <hr/>
+        <div class="row section-help">
             <h2 style="text-align: center">How can you help?</h2>
             <p class="examples">We want to give you some examples of how you can contribute to the local community:</p>
         </div>
-        <div class="row">
-            <div class="col s12 col l4">
+        <div class="row section">
+            <div class="col s12 col l4 col m4">
                 <img src="img/icons/blanket.png">
                 <h3>Blankets</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
+                <p>Have you got a spare blanket? We are sure someone could use it!</p>
             </div>
-            <div class="col s12 col l4">
+            <div class="col s12 col l4 col m4">
                 <img src="img/icons/vegetables.png">
                 <h3>Food</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
+                <p>Got some long lasting food? Cooked too much? Some hungry stomachs would love it!</p>
             </div>
-            <div class="col s12 col l4">
+            <div class="col s12 col l4 col m4">
                 <img src="img/icons/mattress.png">
-                <h3>Matress</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id turpis vitae tellus vestibulum consequat. Praesent in dapibus eros. </p>
+                <h3>Matresses</h3>
+                <p>Are you going to bin an old mattress? They could be invaluable to someone who sleeps rough.</p>
+            </div>
+
+        </div>
+        <div class="row section">
+            <div class="col s12 col l4 col m4">
+                <img src="img/icons/form.png">
+                <h3>Administrative help</h3>
+                <p>Used to filling forms? Your skills could match someone's administrative needs.</p>
+            </div>
+            <div class="col s12 col l4 col m4">
+                <img src="img/icons/clothes.png">
+                <h3>Clothes</h3>
+                <p>Grew too much for your clothes? Someone could give them a second life.</p>
+            </div>
+            <div class="col s12 col l4 col m4">
+                <img src="img/icons/toothbrush.png">
+                <h3>Essentials</h3>
+                <p>Got any spare deodorant, toothbrushes, hair brushes, etc? Give them to people who can't afford them. </p>
             </div>
 
         </div>
     </div>
-<!--
-    <div class="background-2">
+
+    <footer>
         <div class="row">
-            <h2 style="text-align: center">Ready to help?</h2></div>
-        <form class="form" role="search">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
-                    Enviar
-                </button>
+            <div class="container">
+                <div class="col s12 col l4 col m5">
+                    <h3>About us</h3>
+                    <p>Terms &amp; Conditions</p>
+                    <p>Privacy policy</p>
+                    <p>Cookies policy</p>
+                    <p>F&amp;Q</p>
+                </div>
+                <div class="col s12 col l4 col m2"> 
+                </div>
+                <div class="col s12 col l4 col m5">
+                    <h3>Connect with us</h3>
+                    <p>Social networks</p>
+                    <p>loremipsum@loremipsum.com</p>
+                    <p>Phone number</p>
+                    <p>Location</p>
                 </div>
             </div>
-        </form>
-    </div>
--->
+        </div>
+    </footer>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script>
+      // Initialize collapse button
+  $(".button-collapse").sideNav();
+  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  //$('.collapsible').collapsible();
+    </script>
+
+    <!-- Searchar deactivated
+    <script>
         new Typed("#input", {
-            strings: ['Help saving lives...', 'Food', 'Blanktes', 'Hope', 'Help people in your region...', 'Spend opportunities', 'Offer chnaces', 'Save the world :)'],
-            typeSpeed: 100,
-            backSpeed: 30,
+            strings: ['Help saving lives...', 'Food...', 'Blanktes...', 'Hope...', 'Help people in your region...', 'Give opportunities...', 'Offer chnaces...', 'Save the world :)'],
+            typeSpeed: 90,
+            backSpeed: 25,
             attr: 'placeholder',
             bindInputFocusEvents: true,
             showCursor: true,
@@ -108,7 +164,11 @@
             loop: true
         });
     </script>
+    -->
 
+
+
+    <!-- <div class="hiddendiv common"></div> -->
 </body>
 
 </html>

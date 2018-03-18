@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Overview</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-     <link rel="stylesheet" href="/css/master.css">
-     <link rel="stylesheet" href="/css/fa.min.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/master.css">
+    <link rel="stylesheet" href="/css/fa.min.css">
+    <link rel="icon" href="./img/icons/shake_hand.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
     <script src="/js/moment.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <div id="map"></div>
 
     <div id="offerHelp" class="modal">
-      <div class="modal-content">
-        <form onsubmit="return false;" id="helpForm">
-            <h4 class="center-align">Offer help <i class='fa fa-handshake-o'></i></h4>
-            <div class="col m10 s12">
-              <div class="row">
-                <div class="col s12 m4 offset-m4">
-                  <p>You are just two little text-boxes away from making the world a whole lot better for somebody <i class="fa fa-heart" aria-hidden="true"></i></p>
-                </div><br>
-                <div class="input-field col s12 m6 offset-m3">
-                  <i class="fa fa-phone prefix" aria-hidden="true"></i>
-                  <input id="phone_number" type="tel" title="Has to be a valid phone number" name="usr" class="validate" pattern="^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$" required>
-                  <label for="icon_prefix2">Your Phonenumer</label>
-                </div>
-                <div class="input-field col s12 m6 offset-m3">
-                  <i class="fa fa-question prefix" aria-hidden="true"></i>
-                  <input id="desc" title="Has to be between 10 and 255 letters" class="materialize-textarea validate" pattern=".{10,255}" type="text" class="" rquired></input>
-                  <label for="textarea1">What exactly do you want to give away?</label>
-                </div><br>
-                <div class="col s1 m6 offset-m3 center-align">
-                  <button class="btn waves-effect waves-light" id="submitHelp" type="submit" name="action">Offer help
+        <div class="modal-content">
+            <form onsubmit="return false;" id="helpForm">
+                <h4 class="center-align">Offer help <i class='fa fa-handshake-o'></i></h4>
+                <div class="col m10 s12">
+                    <div class="row">
+                        <div class="col s12 m4 offset-m4">
+                            <p>You are just two little text-boxes away from making the world a whole lot better for somebody <i class="fa fa-heart" aria-hidden="true"></i></p>
+                        </div><br>
+                        <div class="input-field col s12 m6 offset-m3">
+                            <i class="fa fa-phone prefix" aria-hidden="true"></i>
+                            <input id="phone_number" type="tel" title="Has to be a valid phone number" name="usr" class="validate" pattern="^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$"
+                                required>
+                            <label for="icon_prefix2">Your Phonenumer</label>
+                        </div>
+                        <div class="input-field col s12 m6 offset-m3">
+                            <i class="fa fa-question prefix" aria-hidden="true"></i>
+                            <input id="desc" title="Has to be between 10 and 255 letters" class="materialize-textarea validate" pattern=".{10,255}" type="text" class="" rquired></input>
+                            <label for="textarea1">What exactly do you want to give away?</label>
+                        </div><br>
+                        <div class="col s1 m6 offset-m3 center-align">
+                            <button class="btn waves-effect waves-light" id="submitHelp" type="submit" name="action">Offer help
                     <i class="fa fa-send right"></i>
                   </button>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </form>
-      </div>
+            </form>
+        </div>
     </div>
 
     <div id="doneModal" class="modal modal-fixed-footer">
@@ -84,7 +88,7 @@
     </div>
 
     <script src="js/map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHAYeNjcUGErzvsIHdf4Bju_0ADZCG9vk&callback=initMap"
-    async defer></script>
-  </body>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHAYeNjcUGErzvsIHdf4Bju_0ADZCG9vk&callback=initMap" async defer></script>
+</body>
+
 </html>
