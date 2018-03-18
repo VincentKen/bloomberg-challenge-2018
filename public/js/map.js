@@ -98,7 +98,7 @@ function displayGroups(groups) {
     });
 
     mapMarkers.push(marker);
-    
+
     info.addListener('domready', function() {
       $('select').material_select();
 
@@ -130,15 +130,15 @@ function fetchMapData() {
     var response = JSON.parse(xhttp.responseText);
     allRequests = response;
     var entries = coordsAsKey(response);
-    
+
     var results = groupEntries(entries);
-    
+
     var groups = Object.keys(results).map(function (key) {
         return {group: key, value: results[key]};
     });
-   
+
     displayGroups(groups);
-    
+
   });
 
   xhttp.addEventListener('error', () => console.log("Request failed"));
@@ -172,7 +172,7 @@ function openHelp(id) {
 $(document).ready(function(){
   $('.modal').modal();
   $('#submitHelp').on('click', function () {
-    
+
     if($("#helpForm")[0].checkValidity()){
      $.ajax({
          url: 'requests/'+currentId+'/offer',
@@ -210,13 +210,13 @@ $(document).ready(function(){
     }
 
     var entries = coordsAsKey(requests);
-    
+
     var results = groupEntries(entries);
-    
+
     var groups = Object.keys(results).map(function (key) {
         return {group: key, value: results[key]};
     });
-   
+
     displayGroups(groups);
   }
 
@@ -230,6 +230,4 @@ $(document).ready(function(){
   $("#startSearch").on("click", function () {
     startSearch();
   });
-
-  $('#doneModal').modal('open');
 });
