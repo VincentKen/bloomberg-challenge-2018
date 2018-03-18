@@ -79,6 +79,47 @@ nav
 
 /* Classes */
 
+@media only screen and (min-width: 992px){
+.mobile-nav {
+    display: none !important;
+}
+}
+
+@media only screen and (max-width: 992px){
+nav {
+    display: none !important;
+}
+}
+
+@media only screen and (max-width: 992px){
+i.material-icons{
+    float: right;
+    margin-right: .25em!important;
+}
+    
+    .brand-logo {
+    margin-left: .25em!important;
+}
+    
+}
+
+i.material-icons{
+    float: right;
+    margin-top: .25em;
+    margin-right: 4em;
+}
+
+.material-icons {
+    color: #3A275E;
+    font-size: 35px;
+}
+
+.brand-logo{
+    color: #3A275E!important;
+    margin-left: 4em;
+        font-size: 2.1rem;
+}
+
 .background
 {
     padding-top: 10em;

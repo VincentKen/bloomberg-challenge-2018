@@ -25,6 +25,13 @@
             </ul>
         </div>
     </nav>
+    <div class="mobile-nav">
+    <a href="#" class="brand-logo">Helping hands</a>
+    <ul id="slide-out" class="side-nav">
+    <li><a href="#!">Who we are</a></li>
+    <li><a href="#!">Contact us</a></li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></div>
     <div class="center-align background">
         <h2>Break barriers, start building.</h2>
         <p>Find local people who need your help.</p>
@@ -57,15 +64,15 @@
 
     <div class="container">
         <div class="row section-steps">
-            <div class="corner col s12 col l4">
+            <div class="corner col s12 col l4 col m4">
                 <center><img src="img/icons/placeholder.png" class="icon"></center>
                 <h3>Find a request near you</h3>
             </div>
-            <div class="corner col s12 col l4">
+            <div class="corner col s12 col l4 col m4">
                 <center><img src="img/icons/target.png" class="icon"></center>
                 <h3>Claim the request</h3>
             </div>
-            <div class="corner col s12 col l4">
+            <div class="corner col s12 col l4 col m4">
                 <center><img src="img/icons/trophy.png" class="icon"></center>
                 <h3>Take action, help someone</h3>
             </div>
@@ -76,17 +83,17 @@
             <p class="examples">We want to give you some examples of how you can contribute to the local community:</p>
         </div>
         <div class="row section">
-            <div class="col s12 col l4">
+            <div class="col s12 col l4 col m4">
                 <img src="img/icons/blanket.png">
                 <h3>Blankets</h3>
                 <p>Have you got a spare blanket? We are sure someone could use it!</p>
             </div>
-            <div class="col s12 col l4">
+            <div class="col s12 col l4 col m4">
                 <img src="img/icons/vegetables.png">
                 <h3>Food</h3>
                 <p>Got some long lasting food? Cooked too much? Some hungry stomachs would love it!</p>
             </div>
-            <div class="col s12 col l4">
+            <div class="col s12 col l4 col m4">
                 <img src="img/icons/mattress.png">
                 <h3>Matresses</h3>
                 <p>Are you going to bin an old mattress? They could be invaluable to someone who sleeps rough.</p>
@@ -94,17 +101,17 @@
 
         </div>
         <div class="row section">
-            <div class="col s12 col l4">
+            <div class="col s12 col l4 col m4">
                 <img src="img/icons/form.png">
                 <h3>Administrative help</h3>
                 <p>Used to filling forms? Your skills could match someone's administrative needs.</p>
             </div>
-            <div class="col s12 col l4">
+            <div class="col s12 col l4 col m4">
                 <img src="img/icons/clothes.png">
                 <h3>Clothes</h3>
                 <p>Grew too much for your clothes? Someone could give them a second life.</p>
             </div>
-            <div class="col s12 col l4">
+            <div class="col s12 col l4 col m4">
                 <img src="img/icons/toothbrush.png">
                 <h3>Essentials</h3>
                 <p>Got any spare deodorant, toothbrushes, hair brushes, etc? Give them to people who can't afford them. </p>
@@ -116,16 +123,16 @@
     <footer>
         <div class="row">
             <div class="container">
-                <div class="col s12 col l4">
+                <div class="col s12 col l4 col m5">
                     <h3>About us</h3>
                     <p>Terms &amp; Conditions</p>
                     <p>Privacy policy</p>
                     <p>Cookies policy</p>
                     <p>F&amp;Q</p>
                 </div>
-                <div class="col s12 col l4">
+                <div class="col s12 col l4 col m2">
                 </div>
-                <div class="col s12 col l4">
+                <div class="col s12 col l4 col m5">
                     <h3>Connect with us</h3>
                     <p>Social networks</p>
                     <p>loremipsum@loremipsum.com</p>
@@ -137,6 +144,12 @@
     </footer>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+      // Initialize collapse button
+  $(".button-collapse").sideNav();
+  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  //$('.collapsible').collapsible();
+    </script>
 
     <!-- Searchar deactivated
     <script>
