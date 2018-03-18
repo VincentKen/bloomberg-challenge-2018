@@ -6,12 +6,26 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
      <link rel="stylesheet" href="/css/master.css">
      <link rel="stylesheet" href="/css/fa.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <script src="/js/moment.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js"></script>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="row">
+          <div style="width: 50px; float: right; margin-left: 50px;">
+            <label for="search"><i style="cursor: pointer" id="startSearch" class="material-icons">search</i></label>
+          </div>
+          <div style="width: 300px; float: right;">
+            <input id="search" type="search" style="height: 25px; color: black">
+          </div>
+        </div>
+      </nav>
+    </div>
     <div id="map"></div>
 
     <div id="offerHelp" class="modal">
@@ -44,16 +58,6 @@
       </div>
     </div>
 
-    <div id="doneModal" class="modal modal-fixed-footer">
-      <div class="modal-content">
-        <h4>You are awesome!</h4>
-        <h3>What now?</h3>
-        <p>A bunch of text</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-      </div>
-    </div>
 
     <script src="js/map.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHAYeNjcUGErzvsIHdf4Bju_0ADZCG9vk&callback=initMap"
