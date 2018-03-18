@@ -1,4 +1,6 @@
 var map;
+var allRequests = [];
+var mapMarkers = [];
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -26,12 +28,99 @@ function locate() {
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-      alert("Sorry we have not been able to detect your position");
+      alert("Sorry we were unable to detect your position");
   }
-
 
   map.setCenter({lat: 51.448006, lng: 5.454005});
   map.setZoom(16);
+}
+
+function coordsAsKey(requests) {
+  var entries = [];
+  for (entry of requests) {
+    entries.push({
+        key:   entry.latitude+"/"+entry.longitude,
+        value: entry
+    });
+  }
+  return entries;
+}
+
+function groupEntries(entries) {
+  return entries.reduce(function (obj, item) {
+    obj[item.key] = obj[item.key] || [];
+    obj[item.key].push(item.value);
+    return obj;
+  }, {});
+}
+
+function displayGroups(groups) {
+  for (entry of groups) {
+    if(entry.group == "null/null")
+      continue;
+
+    var markerText;
+    if(entry.value.length > 1){
+      var markerEndText = "";
+      markerText = '<div class="multiSelect"><div class="input-field col s12">'+
+                    '<select class="selectRequest">'+
+                      '<option value="" disabled selected>Choose one of the requests</option>';
+
+      for (request of entry.value) {
+        markerText += '<option value="'+request.id+'">'+request.requested_resource+'</option>';
+        markerEndText += createInfo(request, "req"+request.id);
+      }
+
+      markerText += '</select>'+
+                    '<label>Select Request</label>'+
+                  '</div>';
+
+      markerText += markerEndText+"</div>";
+    }else{
+      markerText = createInfo(entry.value[0], null);
+    }
+
+    let info = new google.maps.InfoWindow({
+      content: markerText
+    });
+
+    var diff;
+    if(entry.value.length > 1)
+      diff = "multiple";
+    else
+      diff = moment(new Date(entry.value[0].createdAt)).fromNow();
+
+    let marker = new google.maps.Marker({
+      position: {lat: Number(entry.value[0].latitude), lng: Number(entry.value[0].longitude)},
+      // icon: {url:"", scaledSize: new google.maps.Size(30, 30), labelOrigin:{x: 15, y: 40}},
+      label: {color: "#2b00f7", fontWeight:"bold", text:diff,  labelOrigin:{x: 15, y: 40}},
+      map: map
+    });
+
+    mapMarkers.push(marker);
+    
+    info.addListener('domready', function() {
+      $('select').material_select();
+
+      $( ".selectRequest" ).change(function() {
+        if(!$(this).val())
+          return;
+
+        var targetID = "req"+$(this).val();
+        $(this).find("option").each(function() {
+          if("req"+$(this).val() == targetID)
+            $("#req"+$(this).val()).show();
+          else
+            $("#req"+$(this).val()).hide();
+          console.log($(this).attr("id"));
+        });
+      });
+    });
+
+    marker.addListener('click', function() {
+      info.open(map, marker);
+    });
+  }
 }
 
 function fetchMapData() {
@@ -39,91 +128,17 @@ function fetchMapData() {
   xhttp.open("GET", "requests", true);
   xhttp.addEventListener('load', function() {
     var response = JSON.parse(xhttp.responseText);
+    allRequests = response;
+    var entries = coordsAsKey(response);
     
-    var entries = [];
-
-    for (entry of response) {
-      entries.push({
-          key:   entry.latitude+"/"+entry.longitude,
-          value: entry
-      });
-    }
-
-    var results = entries.reduce(function (obj, item) {
-        obj[item.key] = obj[item.key] || [];
-        obj[item.key].push(item.value);
-        return obj;
-    }, {});
-
+    var results = groupEntries(entries);
+    
     var groups = Object.keys(results).map(function (key) {
         return {group: key, value: results[key]};
     });
-
-    for (entry of groups) {
-      if(entry.group == "null/null")
-        continue;
-
-      var markerText;
-      if(entry.value.length > 1){
-        var markerEndText = "";
-        markerText = '<div class="multiSelect"><div class="input-field col s12">'+
-                      '<select class="selectRequest">'+
-                        '<option value="" disabled selected>Choose one of the requests</option>';
-
-        for (request of entry.value) {
-          markerText += '<option value="'+request.id+'">'+request.requested_resource+'</option>';
-          markerEndText += createInfo(request, "req"+request.id);
-        }
-
-        markerText += '</select>'+
-                      '<label>Select Request</label>'+
-                    '</div>';
-
-        markerText += markerEndText+"</div>";
-      }else{
-        markerText = createInfo(entry.value[0], null);
-      }
-
-      let info = new google.maps.InfoWindow({
-        content: markerText
-      });
-
-      var diff;
-      if(entry.value.length > 1)
-        diff = "multiple";
-      else
-        diff = moment(new Date(entry.value[0].createdAt)).fromNow();
-
-      let marker = new google.maps.Marker({
-        position: {lat: Number(entry.value[0].latitude), lng: Number(entry.value[0].longitude)},
-        // icon: {url:"", scaledSize: new google.maps.Size(30, 30), labelOrigin:{x: 15, y: 40}},
-        label: {color: "#2b00f7", fontWeight:"bold", text:diff,  labelOrigin:{x: 15, y: 40}},
-        map: map
-      });
-
-
-      info.addListener('domready', function() {
-        $('select').material_select();
-
-        $( ".selectRequest" ).change(function() {
-          if(!$(this).val())
-            return;
-
-          var targetID = "req"+$(this).val();
-          $(this).find("option").each(function() {
-            if("req"+$(this).val() == targetID)
-              $("#req"+$(this).val()).show();
-            else
-              $("#req"+$(this).val()).hide();
-            console.log($(this).attr("id"));
-          });
-        });
-      });
-
-      marker.addListener('click', function() {
-        info.open(map, marker);
-      });
-    }
+   
+    displayGroups(groups);
+    
   });
 
   xhttp.addEventListener('error', () => console.log("Request failed"));
@@ -157,7 +172,7 @@ function openHelp(id) {
 $(document).ready(function(){
   $('.modal').modal();
   $('#submitHelp').on('click', function () {
-    console.log($("#helpForm"));
+    
     if($("#helpForm")[0].checkValidity()){
      $.ajax({
          url: 'requests/'+currentId+'/offer',
@@ -172,5 +187,49 @@ $(document).ready(function(){
          }
      });
     }
-   });
+  });
+
+  function startSearch() {
+    var val = $("#search").val();
+    var requests;
+    for (var i = 0; i < mapMarkers.length; i++) {
+      if (mapMarkers[i]) {
+        mapMarkers[i].setMap(null);
+      }
+      mapMarkers[i] = null;
+    }
+
+    if (val === '' || !val) {
+      requests = allRequests;
+    } else {
+      var fuse = new Fuse(allRequests, {
+        keys: ['requested_resource'],
+        shouldSort: true
+      });
+      requests = fuse.search(val);
+    }
+
+    var entries = coordsAsKey(requests);
+    
+    var results = groupEntries(entries);
+    
+    var groups = Object.keys(results).map(function (key) {
+        return {group: key, value: results[key]};
+    });
+   
+    displayGroups(groups);
+  }
+
+  $('#search').keypress(function(event) {
+    if (event.keyCode == 13) {
+        startSearch();
+    }
+  });
+
+
+  $("#startSearch").on("click", function () {
+    startSearch();
+  });
+
+  $('#doneModal').modal('open');
 });

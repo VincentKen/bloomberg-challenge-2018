@@ -18,7 +18,9 @@ app.use(express.static('public'));
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/', (req, res) => res.send('Hello World'));
+app.get('/', (req, res) => {
+	res.redirect('/map.html');
+});
 
 app.get('/requests', (req, res) => {
 	models.Request.findAll({
@@ -323,7 +325,7 @@ app.post('/twilio/sms', (req, res) => {
 			// TODO implement error handling
 		});
 	}
-	console.log(' TEST' );
+	
 	switch(type.toLowerCase()) {
 		case 'hello':
 			handleGreeting();
@@ -342,8 +344,7 @@ app.post('/twilio/sms', (req, res) => {
 			res.end(twiml.toString());
 			break;
 		default:
-			console.log('Default');
-			if (type.toLowerCase().test(/^([0-9]+)\: /)){
+			if (/^([0-9]+)\: /.test(type.toLowerCase())){
 				acceptOffer(type.toLowerCase().match(/^([0-9]+)\: /)[1]);
 				break;
 			}
@@ -356,14 +357,3 @@ app.post('/twilio/sms', (req, res) => {
 });
 
 app.listen(80, () => console.log('Listening on port 80'));
-
-/*twilioClient.messages.create({
-	to: '+31624776676',
-	from: config.twilio.number,
-	body: 'Test message'
-}, (err, message) => {
-	if (err) {
-		console.error(err);
-	}
-	console.log(message.sid);
-});*/
