@@ -39,7 +39,7 @@ function fetchMapData() {
   xhttp.open("GET", "requests", true);
   xhttp.addEventListener('load', function() {
     var response = JSON.parse(xhttp.responseText);
-    console.log(response);
+    
     var entries = [];
 
     for (entry of response) {
@@ -168,10 +168,9 @@ $(document).ready(function(){
              message : $('#desc').val(),
          }),
          success: function() {
-           console.log("DONE!");
+           $('#doneModal').modal('open');
          }
      });
     }
    });
-   $('#doneModal').modal('open');
 });

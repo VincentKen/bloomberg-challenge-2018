@@ -1,8 +1,8 @@
 module.exports = {
 	twilio: {
-		accountSID: 'AC79c318b4295293369d77f97e6927b466',
-		authToken: '41c428c7a313abfaaf8310e6c785779e',
-		number: '+3197014200121'
+		accountSID: 'ACe48d5853959458b5de2f3bb2d847e547',
+		authToken: 'a22e09ea2e1338d679966a38bf805b12',
+		number: '+3197014200651'
 	},
 	geocoder: {
 		provider: 'google',

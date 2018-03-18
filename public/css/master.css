@@ -4,6 +4,23 @@ html, body {
     padding: 0;
 }
 
+#doneModal h2{
+  font-size: 27pt;
+}
+
+#doneModal h3{
+  font-size: 24pt;
+}
+
+#doneModal .icon{
+  font-size: 30pt;
+  text-align: center;
+}
+
+#doneModal .desc{
+  font-size: 18pt;
+}
+
 #indexContet form {
     padding-top: 7em;
     padding-bottom: 7em;
